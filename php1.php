@@ -14,6 +14,17 @@
 
 <?php
 
+
+$dns = "mysql:host=localhost;dbname=work_of_tracker"; 
+$username = "root";
+$password = "qwert";
+
+$pdo =  new PDO($dns,$username,$password);
+
+$workTimes = $pdo->query("SELECT * FROM work_times");
+
+print_r($workTimes->fetch());
+
 define('WORK_TIME', 8);
 
 if (isset($_POST['arrived_at']) && isset($_POST['leaved_at'])) {
@@ -28,6 +39,8 @@ if (isset($_POST['arrived_at']) && isset($_POST['leaved_at'])) {
     <h1>Diff Hour: {$diff->h}</h1>
     <h1>Diff Minutes: {$diff->i}</h1>
     ";
+
+    $query = "INSEERT INTO work_times (arrived_at, leaved_at)"
 }
 
 ?>
