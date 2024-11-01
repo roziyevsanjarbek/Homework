@@ -40,7 +40,7 @@ if (isset($_POST['arrived_at']) && isset($_POST['leaved_at'])) {
     <h1>Diff Minutes: {$diff->i}</h1>
     ";
 
-    $query = "INSEERT INTO work_times (arrived_at, leaved_at)"
+    $query = "INSEERT INTO work_times (arrived_at, leaved_at)";
 }
 
 ?>
