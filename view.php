@@ -120,6 +120,25 @@
                 ?>
             </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <?php
+            global $workDay, $currentPage;
+            $disabled = $currentPage == 1 ? "disabled" : "";
+
+            ?>
+            <li class="page-item <?=$disabled?>"><a class="page-link" href="#">Previous</a></li>
+            <?php
+            $pageCount = $workDay->calculatePageCount();
+            for ($page = 1; $page <= $pageCount; $page++) {
+                $active = $page == $currentPage ? "active" : "";
+                echo "<li class='page-item $active''><a class='page-link'' href='index.php?page=" . $page . "''>" . $page . "</a></li>";
+            }
+
+            ?>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
     </div>
 </body>
 </html>
