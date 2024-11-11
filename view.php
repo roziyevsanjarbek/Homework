@@ -81,6 +81,12 @@
                 <input type="datetime-local" class="form-control" id="leaved_at" name="leaved_at">
             </div>
             <button type="submit" class="btn btn-primary custom-btn">Submit</button>
+            <button form = "export" type="submit" class="btn btn-success custom-btn">Export</button>
+        </form>
+        <form action="" id = "export" method = "post">
+
+        <input type="text" name = "export"  value = "true" hidden = "">
+
         </form>
     </div>
 
@@ -94,6 +100,7 @@
                     <th scope="col">Kelgan vaqti</th>
                     <th scope="col">Ketgan vaqti</th>
                     <th scope="col">Qarizdorlik vaqti</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -105,6 +112,9 @@
                         <td>{$record['arrived_at']}</td>
                         <td>{$record['leaved_at']}</td>
                         <td>" . gmdate('H:i', $record['required_of']) . "</td>
+                        <td><a href = 'index.php?done=" . $record['id'] ."'>Done</a></td>
+
+
                     </tr>";
                 }
                 ?>

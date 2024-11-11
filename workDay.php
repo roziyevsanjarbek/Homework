@@ -46,5 +46,21 @@ class workDay{
         $stmt = $this->pdo->query($query);
         return  $stmt->fetchAll();
     }
-}
+
+
+    public function calculateDebtTimeForEachUser () {
+        $query = "SELECT name, SUM(required_of) as debt FROM  work_times GROUP BY name";
+        $stmt = $this->pdo->query($query);
+        return  $stmt->fetchAll();
+    }
+
+    public function markAsDone(int $id) {
+        $query = "UPDATE work_times SET required_of = 0 WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
+    
+    }
+
 
